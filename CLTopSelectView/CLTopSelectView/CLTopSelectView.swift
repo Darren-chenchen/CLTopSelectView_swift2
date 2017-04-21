@@ -11,7 +11,7 @@ import UIKit
 typealias titleClickClosure = (Int) -> Void
 
 class CLTopSelectView: UIView {
-
+    
     var titleClicks:titleClickClosure?
     
     /**指定下面指示器的高度，默认是1*/
@@ -43,7 +43,7 @@ class CLTopSelectView: UIView {
             }
         }
     }
-
+    
     // 用 static 修饰在外面才能用CLTopSelectView.selectViewShow来调用
     static func selectViewShow(_ rect:CGRect,TitleArray:[String],defaltSelectedIndex:Int,scrollEnable:Bool,lineEqualWidth:Bool,btnColor:UIColor,btnSelectedColor:UIColor,btnFont:CGFloat, titleClick:@escaping titleClickClosure) -> CLTopSelectView {
         
@@ -64,8 +64,9 @@ class CLTopSelectView: UIView {
         let  bottomScrollView = UIScrollView()
         bottomScrollView.showsHorizontalScrollIndicator = false
         bottomScroll = bottomScrollView
-        
+        bottomScrollView.backgroundColor = UIColor.clear
         bottomScrollView.frame = self.bounds
+        
         var btnW:CGFloat = 0
         var btnX:CGFloat = 0
         let btnH = self.frame.size.height-indicatorViewHeight
@@ -74,10 +75,10 @@ class CLTopSelectView: UIView {
         var btnXTemp:CGFloat = 0
         for i in 0..<TitleArray.count {
             let btn = UIButton()
-
+            
             if scrollEnable {  // 可以滚动
                 btnW = self.getLabWidth(labelStr: TitleArray[i], font: UIFont.systemFont(ofSize: btnFont), height: btn.frame.size.height)
-
+                
                 if i == 0 {
                     btnX = margin
                 } else {
@@ -98,9 +99,10 @@ class CLTopSelectView: UIView {
             btn.tag = i
             btn.setTitle(TitleArray[i], for: .normal)
             btn.setTitleColor(btnTitleColor, for: .normal)
-            btn .setTitleColor(btnSelectedTitleColor, for: .selected)
+            btn.setTitleColor(btnSelectedTitleColor, for: .selected)
             btn.titleLabel?.font = UIFont.systemFont(ofSize: btnFont)
             btn.addTarget(self, action: #selector(clickBtn(_:)), for: .touchUpInside)
+            btn.backgroundColor = UIColor.clear
             bottomScrollView.addSubview(btn)
             
             if defaltSelectedIndex==i {
@@ -120,7 +122,7 @@ class CLTopSelectView: UIView {
         self.addSubview(bottomScrollView)
     }
     
-   @objc private func clickBtn(_ btn:UIButton){
+    @objc private func clickBtn(_ btn:UIButton){
         if (titleClicks != nil) {
             titleClicks!(btn.tag)
         }
@@ -133,6 +135,25 @@ class CLTopSelectView: UIView {
             btn.titleLabel?.sizeToFit()
             self.indicatorView.frame.size.width = btn.titleLabel!.frame.size.width
             self.indicatorView.center.x = btn.center.x
+        }
+        
+        // 判断scrollview的contentsize是否超过了屏幕尺寸
+        if self.bottomScroll.contentSize.width>UIScreen.main.bounds.size.width {
+            let offset = btn.cl_centerX-self.cl_centerX;
+            let offset2 = self.bottomScroll.contentSize.width-UIScreen.main.bounds.size.width
+            if (0<offset)&&(offset<offset2) {
+                self.bottomScroll.setContentOffset(CGPoint(x:offset,y:0), animated: true)
+            } else if (0<offset)&&(offset>offset2) {
+                self.bottomScroll.setContentOffset(CGPoint(x:offset2,y:0), animated: true)
+            } else {
+                let offset3 = fabs(self.bottomScroll.contentOffset.x)
+                let offset4 = fabs(offset)
+                if offset4>offset3 {
+                    self.bottomScroll.setContentOffset(CGPoint(x:-offset3,y:0), animated: true)
+                } else {
+                    self.bottomScroll.setContentOffset(CGPoint(x:-offset4,y:0), animated: true)
+                }
+            }
         }
     }
     

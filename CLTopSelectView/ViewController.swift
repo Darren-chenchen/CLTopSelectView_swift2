@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         
-       let selectView = CLTopSelectView.selectViewShow(CGRect(x: 0, y: 20, width: self.view.frame.size.width, height: 40), TitleArray: ["热门","最新最新","销量最新","价格","最新热门"], defaltSelectedIndex: 0, scrollEnable: false, lineEqualWidth: true, btnColor:UIColor.black,btnSelectedColor:UIColor.red,btnFont:15,titleClick: { (index:NSInteger) in
+       let selectView = CLTopSelectView.selectViewShow(CGRect(x: 0, y: 20, width: self.view.frame.size.width, height: 40), TitleArray: ["热门","最新最新","销量最新","价格","最新热门","热门","最新最新","销量最新","价格"], defaltSelectedIndex: 0, scrollEnable: true, lineEqualWidth: true, btnColor:UIColor.black,btnSelectedColor:UIColor.red,btnFont:15,titleClick: { (index:NSInteger) in
             print(index)
         })
 //       selectView.indicatorViewHeight = 5   // 自定义指示器的高度

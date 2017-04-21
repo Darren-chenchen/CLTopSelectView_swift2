@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		951557DB1EA9E1540093686D /* UIView+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951557DA1EA9E1540093686D /* UIView+Frame.swift */; };
 		957E325E1DADCDE2005B4079 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E325D1DADCDE2005B4079 /* AppDelegate.swift */; };
 		957E32601DADCDE2005B4079 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E325F1DADCDE2005B4079 /* ViewController.swift */; };
 		957E32631DADCDE2005B4079 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957E32611DADCDE2005B4079 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		951557DA1EA9E1540093686D /* UIView+Frame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Frame.swift"; sourceTree = "<group>"; };
 		957E325A1DADCDE2005B4079 /* CLTopSelectView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLTopSelectView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		957E325D1DADCDE2005B4079 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		957E325F1DADCDE2005B4079 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 		957E32701DADCE21005B4079 /* CLTopSelectView */ = {
 			isa = PBXGroup;
 			children = (
+				951557DA1EA9E1540093686D /* UIView+Frame.swift */,
 				957E32711DADCE6C005B4079 /* CLTopSelectView.swift */,
 			);
 			path = CLTopSelectView;
@@ -156,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				951557DB1EA9E1540093686D /* UIView+Frame.swift in Sources */,
 				957E32721DADCE6C005B4079 /* CLTopSelectView.swift in Sources */,
 				957E32601DADCDE2005B4079 /* ViewController.swift in Sources */,
 				957E325E1DADCDE2005B4079 /* AppDelegate.swift in Sources */,
@@ -320,6 +324,7 @@
 				957E326E1DADCDE2005B4079 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
